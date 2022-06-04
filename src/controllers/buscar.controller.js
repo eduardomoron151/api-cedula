@@ -8,8 +8,9 @@ const buscarCedula = async (req, res) => {
         const { nacionalidad, cedula } = req.params;
 
         const html = await axios
-            .get(`http://www.cne.gob.ve/web/registro_electoral/ce.php?nacionalidad=${nacionalidad}&cedula=${cedula}`, {timeout : 10000});
+            .get(`http://www.cne.gob.ve/web/registro_electoral/ce.php?nacionalidad=${nacionalidad}&cedula=${cedula}`);
 
+        console.log(html.data);
         const $ = await cheerio.load(html.data);
 
         const verificarData = await $('td[align="center"]')[1].children[0].children[0].children[0].data;
