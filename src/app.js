@@ -14,11 +14,13 @@ const path = {
 // routes
 const buscarRoutes = require('./routes/buscar.routes');
 
+// midlewares
+app.use(cors());
+
 // using routes
 app.use(path.buscar, buscarRoutes);
 
-// midlewares
-app.use(cors());
+
 
 app.listen(port, () => {
     console.log('Servidor on port', port);
