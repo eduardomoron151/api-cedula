@@ -4,7 +4,11 @@ const cors = require('cors');
 
 // using express
 const app = express();
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
+
+const corsOptions = {
+    origin : '*'
+}
 
 // path routes
 const path = {
@@ -15,7 +19,7 @@ const path = {
 const buscarRoutes = require('./routes/buscar.routes');
 
 // midlewares
-app.use(cors());
+app.use(cors(corsOptions));
 
 // using routes
 app.use(path.buscar, buscarRoutes);
